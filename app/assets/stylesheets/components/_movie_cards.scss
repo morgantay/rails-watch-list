@@ -1,0 +1,57 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+}
+
+.movie-cards ul {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-auto-columns: repeat(2, 400px);
+}
+
+.movie-cards ul li {
+  border: 1px solid black;
+  width: 400px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+}
+
+.image {
+  background-color: black;
+  height: 50%;
+}
+
+.title-rating {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 5px 20px;
+}
+
+.title-rating p {
+  margin-bottom: 0;
+}
+
+.overview {
+  opacity: 0.5;
+  margin: 5px 20px;
+}
+
+.delete-comment {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 5px 20px;
+}
+
+.delete {
+  text-decoration: none;
+  color: black;
+  padding: 10px 0;
+  background-color: #fc5000;
+  width: 60px;
+}

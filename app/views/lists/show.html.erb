@@ -1,0 +1,60 @@
+<div class='fixed-banner'>
+  <h2><%= @list.name %></h2>
+<div>
+<div class='container'>
+  <div class='movie-cards'>
+    <ul>
+      <% @list.movies.each do |movie| %>
+      <% bookmark = Bookmark.find_by(movie: movie, list: @list) %>
+        <li>
+          <div class='image'></div>
+          <div class='title-rating'>
+            <p><%= movie.title %></p>
+            <p><%= movie.rating %></p>
+          </div>
+          <div class='overview'>
+            <p><%= movie.overview %></p>
+          </div>
+          <div class='delete-comment'>
+            <%= link_to 'delete', bookmark_path(bookmark), data: {turbo_method: :delete}, class: 'delete' %>
+            <%= bookmark.comment %>
+          <div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+  <div class='forms'>
+    <div class='add-tag'>
+      <div class='form'>
+        <%= simple_form_for([@list, @bookmark]) do |f| %>
+          <%= f.association :movie %>
+          <%= f.input :comment %>
+          <%= f.submit %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class='reviews'>
+      <div class='review-form'>
+        <div class='form'>
+          <%= simple_form_for([@list, @review]) do |f| %>
+            <%= f.input :content %>
+            <%= f.input :rating, collection: (1..5).to_a %>
+            <%= f.submit %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class='review-display'>
+        <ul>
+          <% @list.reviews.each do |review| %>
+            <li>
+              <%= review.content %>
+              <p><%= review.rating %>/5</p>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

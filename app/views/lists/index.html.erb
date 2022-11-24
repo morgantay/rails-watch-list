@@ -1,0 +1,15 @@
+<div class='banner'></div>
+<div class='container'>
+  <div class='add-list-banner'>
+    <%= link_to 'add list',  new_list_path, class: 'add-list' %>
+  </div>
+  <div class='list-cards'>
+    <ul>
+      <% @lists.each do |list| %>
+        <li>
+          <a href="lists/<%= list.id %>"><%= list.name %></a>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

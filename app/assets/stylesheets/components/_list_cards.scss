@@ -1,0 +1,45 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.add-list-banner {
+  display: flex;
+  justify-content: end;
+}
+
+.add-list {
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+  color: black;
+  margin: 10px 0;
+  padding: 10px 0;
+  background-color: #fc5000;
+  width: 100px;
+}
+
+.list-cards ul {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.list-cards ul li {
+  border: 1px solid black;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.list-cards ul li a {
+  text-decoration: none;
+  color: black;
+  font-size: 25px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
