@@ -1,4 +1,4 @@
-.container {
+.container2 {
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
@@ -17,11 +17,46 @@
   height: 500px;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 .image {
-  background-color: black;
-  height: 50%;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  overflow-y: hidden;
+}
+
+.movie-info {
+  position: absolute;
+  opacity: 1;
+}
+
+.image::before,
+.image::after {
+  background: rgba($color: #000000, $alpha: 0.5);
+  transition: all .5s ease;
+  z-index: 1;
+  opacity: 0;
+  transform: scaleY(2);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  content: '';
+}
+
+.image:hover::before,
+.image:hover::after {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.image:hover .movie-info {
+  opacity: 1;
+  z-index: 4;
+  transition: all .5s ease;
 }
 
 .title-rating {
@@ -34,11 +69,15 @@
 
 .title-rating p {
   margin-bottom: 0;
+  color: white;
 }
 
 .overview {
-  opacity: 0.5;
   margin: 5px 20px;
+
+  p {
+    color: white;
+  }
 }
 
 .delete-comment {
@@ -54,4 +93,17 @@
   padding: 10px 0;
   background-color: #fc5000;
   width: 60px;
+}
+
+.forms {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 20px;
+}
+
+.add-tag, .reviews {
+  border: 1px solid black;
+  width: 40%;
+  padding: 20px;
 }

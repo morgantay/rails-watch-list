@@ -1,24 +1,26 @@
 <div class='fixed-banner'>
   <h2><%= @list.name %></h2>
 <div>
-<div class='container'>
+<div class='container-2'>
   <div class='movie-cards'>
     <ul>
       <% @list.movies.each do |movie| %>
       <% bookmark = Bookmark.find_by(movie: movie, list: @list) %>
         <li>
-          <div class='image'></div>
-          <div class='title-rating'>
-            <p><%= movie.title %></p>
-            <p><%= movie.rating %></p>
+          <img class='image' src='https://image.tmdb.org/t/p/w400<%= movie.poster_url%>'>
+          <div class='movie-info'>
+            <div class='title-rating'>
+              <p><%= movie.title %></p>
+              <p><%= movie.rating %></p>
+            </div>
+            <div class='overview'>
+              <p><%= movie.overview %></p>
+            </div>
+            <div class='delete-comment'>
+              <%= link_to 'delete', bookmark_path(bookmark), data: {turbo_method: :delete}, class: 'delete' %>
+              <%= bookmark.comment %>
+            </div>
           </div>
-          <div class='overview'>
-            <p><%= movie.overview %></p>
-          </div>
-          <div class='delete-comment'>
-            <%= link_to 'delete', bookmark_path(bookmark), data: {turbo_method: :delete}, class: 'delete' %>
-            <%= bookmark.comment %>
-          <div>
         </li>
       <% end %>
     </ul>

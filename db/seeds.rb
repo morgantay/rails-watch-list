@@ -7,12 +7,12 @@
 #   Character.create(name: "Luke", movie: movies.first)
 require 'open-uri'
 require 'json'
-
+Movie.destroy_all
 response = URI.open('https://tmdb.lewagon.com/movie/top_rated').read
 json = JSON.parse(response)
 movies = json['results']
 movies.each do |movie|
   Movie.create!(
-    title: movie['title'], overview: movie['overview'], poster_url: movie['poster_url'], rating: movie['vote_average']
+    title: movie['title'], overview: movie['overview'], poster_url: movie['poster_path'], rating: movie['vote_average']
   )
 end
